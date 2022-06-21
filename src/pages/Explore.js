@@ -1,11 +1,10 @@
 import React from 'react';
-import Header from '../components/Heades';
+import Header from '../components/Header';
 
 function Explore() {
   return (
     <div>
-      <h1>Busca</h1>
-      <Header page="Explore" />
+      <Header title="Busca" />
     </div>
   );
 }

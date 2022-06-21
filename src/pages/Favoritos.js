@@ -4,8 +4,7 @@ import Header from '../components/Header';
 function Favoritos() {
   return (
     <div>
-      <h1>Favoritos</h1>
-      <Header page="Favorites" />
+      <Header title="Favoritos" />
     </div>
   );
 }
