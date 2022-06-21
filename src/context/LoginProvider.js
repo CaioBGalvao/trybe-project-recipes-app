@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import AppContext from './AppContext';
+import LoginContext from './LoginContext';
 
 function Provider({ children }) {
   const [inputEmail, setInputEmail] = useState('');
@@ -14,9 +14,9 @@ function Provider({ children }) {
   };
 
   return (
-    <AppContext.Provider value={ contextValue }>
+    <LoginContext.Provider value={ contextValue }>
       {children}
-    </AppContext.Provider>
+    </LoginContext.Provider>
   );
 }
 
