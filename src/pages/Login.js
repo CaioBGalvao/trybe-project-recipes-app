@@ -1,7 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import AppContext from '../context/AppContext';
 
-export default function Login() {
+export default function Login({ history }) {
   const {
     setInputEmail,
     setInputPassword,
@@ -23,6 +24,18 @@ export default function Login() {
       setValidation(true);
     }
   }, [inputEmail, inputPassword]);
+
+  const handleButtonClick = () => {
+    const personObject = {
+      email: inputEmail,
+    };
+
+    localStorage.setItem('mealsToken', JSON.stringify(1));
+    localStorage.setItem('user', JSON.stringify(personObject));
+    localStorage.setItem('cocktailsToken', JSON.stringify(1));
+
+    history.push('/foods');
+  };
 
   return (
     <>
@@ -49,6 +62,7 @@ export default function Login() {
         type="button"
         data-testid="login-submit-btn"
         disabled={ isValid }
+        onClick={ handleButtonClick }
       >
         Enter
       </button>
@@ -56,3 +70,13 @@ export default function Login() {
 
   );
 }
+
+Login.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }),
+};
+
+Login.defaultProps = {
+  history: null,
+};
