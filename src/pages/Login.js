@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import AppContext from '../context/AppContext';
+import LoginContext from '../context/LoginContext';
 
 export default function Login({ history }) {
   const {
@@ -8,7 +8,7 @@ export default function Login({ history }) {
     setInputPassword,
     inputEmail,
     inputPassword,
-  } = useContext(AppContext);
+  } = useContext(LoginContext);
 
   const [isValid, setValidation] = useState(true);
 

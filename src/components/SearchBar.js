@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import AppContext from '../context/AppContext';
+import RevenuesContext from '../context/RevenuesContext';
 
 function SearchBar({ myRoute }) {
   const {
@@ -8,7 +8,13 @@ function SearchBar({ myRoute }) {
     ingredientRadio,
     nameRadio,
     firstLetterRadio,
-  } = useContext(AppContext);
+    setRevenuesSearch,
+    setIngredientRadio,
+    setNameRadio,
+    setFirstLetterRadio,
+    setMyRoute,
+    fetchApi,
+  } = useContext(RevenuesContext);
   return (
     <form>
       <label htmlFor="revenues-search">
@@ -21,33 +27,36 @@ function SearchBar({ myRoute }) {
         />
       </label>
       <label htmlFor="ingredient-radio">
+        Ingredient
         <input
           type="radio"
           id="ingredient-radio"
           name="ingredient"
           value={ ingredientRadio }
-          onChange={ ({ target: { value } }) => setIngredientRadio(value) }
+          onChange={ () => setIngredientRadio(!ingredientRadio) }
           data-testid="ingredient-search-radio"
         />
       </label>
       <label htmlFor="name-radio">
+        Name
         <input
           type="radio"
           id="name-radio"
           name="name"
           value={ nameRadio }
-          onChange={ ({ target: { value } }) => setNameRadio(value) }
+          onChange={ () => setNameRadio(!nameRadio) }
           data-testid="name-search-radio"
         />
       </label>
       <label htmlFor="first-letter-radio">
+        First Letter
         <input
           type="radio"
           id="first-letter-radio"
           name="firstLetter"
           value={ firstLetterRadio }
-          onChange={ ({ target: { value } }) => {
-            setFirstLetterRadio(value);
+          onChange={ () => {
+            setFirstLetterRadio(!firstLetterRadio);
             setMyRoute(myRoute);
           } }
           data-testid="first-letter-search-radio"
@@ -56,6 +65,7 @@ function SearchBar({ myRoute }) {
       <button
         type="button"
         data-testid="exec-search-btn"
+        onClick={ fetchApi }
       >
         Search
 
