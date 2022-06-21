@@ -1,39 +1,39 @@
 .noShow {
-    display: none;
+  display: none;
 }
 
 .footer__footer {
-    position: fixed;
+  position: fixed;
 }
 
 .btn__row {
-    background-color: gainsboro;
-    display: flex;
-    height: 50px;
-    justify-content: space-evenly;
-    width: 300px;
+  background-color: gainsboro;
+  display: flex;
+  height: 50px;
+  justify-content: space-evenly;
+  width: 300px;
 }
 
 .btn__drinks {
-    background: url('../images/drinkIcon.svg') no-repeat;
-    border: none;
-    height: 40px;
-    margin-top: 5px;
-    width: 40px;
+  background: url('../images/drinkIcon.svg') no-repeat;
+  border: none;
+  height: 40px;
+  margin-top: 5px;
+  width: 40px;
 }
 
 .btn__explore {
-    background: url('../images/exploreIcon.svg') no-repeat;
-    border: none;
-    height: 40px;
-    margin-top: 5px;
-    width: 40px;
+  background: url('../images/exploreIcon.svg') no-repeat;
+  border: none;
+  height: 40px;
+  margin-top: 5px;
+  width: 40px;
 }
 
 .btn__foods {
-    background: url('../images/mealIcon.svg') no-repeat;
-    border: none;
-    height: 40px;
-    margin-top: 5px;
-    width: 40px;
+  background: url('../images/mealIcon.svg') no-repeat;
+  border: none;
+  height: 40px;
+  margin-top: 5px;
+  width: 40px;
 }
