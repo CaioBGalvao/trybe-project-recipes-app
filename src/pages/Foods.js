@@ -7,6 +7,5 @@ export default function Foods() {
       <h1>Foods</h1>
       <Header page="Foods" />
     </div>
-
   );
 }
