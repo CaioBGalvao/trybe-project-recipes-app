@@ -4,7 +4,7 @@ import Header from '../components/Header';
 function FoodsIngredients() {
   return (
     <div>
-      <Header title="Busca por Foods - Ingredientes" />
+      <Header title="Explore Ingredients" btnSearch />
     </div>
   );
 }

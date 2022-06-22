@@ -4,7 +4,7 @@ import Header from '../components/Header';
 function ExploreNacionalities() {
   return (
     <div>
-      <Header title="Busca por Nacionalidades" />
+      <Header title="Explore Nationalities" />
     </div>
   );
 }
