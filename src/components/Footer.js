@@ -15,7 +15,7 @@ export default function Footer() {
       setRedirectToFoods(false);
     };
 
-    return resetAllRedirects();
+    return resetAllRedirects;
   }, []);
 
   return (
