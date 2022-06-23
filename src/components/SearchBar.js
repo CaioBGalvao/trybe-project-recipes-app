@@ -1,20 +1,68 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import RevenuesContext from '../context/RevenuesContext';
 
-function SearchBar({ myRoute }) {
+function SearchBar({ pathname }) {
   const {
-    revenuesSearch,
-    ingredientRadio,
-    nameRadio,
-    firstLetterRadio,
-    setRevenuesSearch,
-    setIngredientRadio,
-    setNameRadio,
-    setFirstLetterRadio,
-    setMyRoute,
-    fetchApi,
+    requestRevenues,
   } = useContext(RevenuesContext);
+
+  const [state, setState] = useState({
+    revenuesSerch: '',
+    ingredient: false,
+    name: false,
+    firstLetter: false,
+  });
+
+  const handleChange = ({ target: { name, value } }) => {
+    switch (name) {
+    case 'revenuesSerch':
+      return setState({
+        ...state,
+        [name]: value,
+      });
+    case 'ingredient':
+      return setState({
+        ...state,
+        [name]: !state[name],
+        name: false,
+        firstLetter: false,
+      });
+    case 'name':
+      return setState({
+        ...state,
+        [name]: !state[name],
+        ingredient: false,
+        firstLetter: false,
+      });
+    case 'firstLetter':
+      return setState({
+        ...state,
+        [name]: !state[name],
+        ingredient: false,
+        name: false,
+      });
+    default: return setState({ ...state });
+    }
+  };
+
+  const { revenuesSerch, ingredient, name, firstLetter } = state;
+
+  const endPointSelector = () => {
+    if (ingredient === true) {
+      return `filter.php?i=${revenuesSerch}`;
+    }
+    if (name === true) {
+      return `search.php?s=${revenuesSerch}`;
+    }
+    if (firstLetter === true && revenuesSerch.length === 1) {
+      return `search.php?s=${revenuesSerch}`;
+    }
+    if (firstLetter === true && revenuesSerch.length !== 1) {
+      global.alert('Your search must have only 1 (one) character');
+    }
+  };
+
   return (
     <form>
       <label htmlFor="revenues-search">
@@ -23,8 +71,9 @@ function SearchBar({ myRoute }) {
           type="search"
           id="revenues-search"
           name="revenuesSerch"
-          value={ revenuesSearch }
-          onChange={ ({ target: { value } }) => setRevenuesSearch(value) }
+          data-testid="search-input"
+          value={ revenuesSerch }
+          onChange={ handleChange }
         />
       </label>
       <label htmlFor="ingredient-radio">
@@ -33,8 +82,8 @@ function SearchBar({ myRoute }) {
           type="radio"
           id="ingredient-radio"
           name="ingredient"
-          value={ ingredientRadio }
-          onChange={ () => setIngredientRadio(!ingredientRadio) }
+          checked={ ingredient }
+          onChange={ handleChange }
           data-testid="ingredient-search-radio"
         />
       </label>
@@ -44,8 +93,8 @@ function SearchBar({ myRoute }) {
           type="radio"
           id="name-radio"
           name="name"
-          value={ nameRadio }
-          onChange={ () => setNameRadio(!nameRadio) }
+          checked={ name }
+          onChange={ handleChange }
           data-testid="name-search-radio"
         />
       </label>
@@ -55,18 +104,17 @@ function SearchBar({ myRoute }) {
           type="radio"
           id="first-letter-radio"
           name="firstLetter"
-          value={ firstLetterRadio }
-          onChange={ () => {
-            setFirstLetterRadio(!firstLetterRadio);
-            setMyRoute(myRoute);
-          } }
+          checked={ firstLetter }
+          onChange={ handleChange }
           data-testid="first-letter-search-radio"
         />
       </label>
       <button
         type="button"
         data-testid="exec-search-btn"
-        onClick={ fetchApi }
+        onClick={ () => {
+          requestRevenues(endPointSelector(), pathname);
+        } }
       >
         Search
 
@@ -76,7 +124,7 @@ function SearchBar({ myRoute }) {
 }
 
 SearchBar.propTypes = {
-  myRoute: PropTypes.string.isRequired,
+  pathname: PropTypes.string.isRequired,
 };
 
 export default SearchBar;
