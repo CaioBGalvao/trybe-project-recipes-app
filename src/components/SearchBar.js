@@ -67,6 +67,7 @@ function SearchBar({ pathname }) {
     <form>
       <label htmlFor="revenues-search">
         <input
+          data-testid="search-input"
           type="search"
           id="revenues-search"
           name="revenuesSerch"
