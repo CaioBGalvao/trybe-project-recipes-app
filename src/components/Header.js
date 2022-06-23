@@ -36,6 +36,7 @@ export default function Header({ title/* , btnSearch  */ }) {
           alt="Profile"
         />
       </button>
+      {/* Esperando a mentoria */}
       {/* { !btnSearch ? (
         <button
           type="button"
