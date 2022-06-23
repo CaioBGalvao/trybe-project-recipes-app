@@ -19,16 +19,28 @@ export default function Header({ title, btnSearch }) {
       <h1 data-testid="page-title">
         {title}
       </h1>
+
+      <button
+        type="button"
+        onClick={ () => {
+          if (renderSearchBar === false) {
+            setRenderSearchBar(true);
+          } else {
+            setRenderSearchBar(false);
+          }
+        } }
+      >
+        <img
+          src={ searchIcon }
+          alt="Profile"
+          data-testid="search-top-btn"
+        />
+      </button>
+
       { !btnSearch ? (
         <button
           type="button"
-          onClick={ () => {
-            if (renderSearchBar === false) {
-              setRenderSearchBar(true);
-            } else {
-              setRenderSearchBar(false);
-            }
-          } }
+          onClick={ () => { setRenderSearchBar(!renderSearchBar); } }
         >
           <img
             src={ searchIcon }
