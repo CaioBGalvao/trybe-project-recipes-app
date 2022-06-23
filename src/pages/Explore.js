@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
-// Falta Footer
+import Footer from '../components/Footer';
 
 function Explore() {
   return (
-    <div>
+    <>
       <Header title="Busca" />
       <Link to="/explore/foods">
         <button
@@ -25,7 +25,8 @@ function Explore() {
 
         </button>
       </Link>
-    </div>
+      <Footer />
+    </>
   );
 }
 
