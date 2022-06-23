@@ -6,7 +6,7 @@ function DoneRecipes() {
   return (
     <div>
       <Header title="Done Recipes" btnSearch />
-       <Footer />
+      <Footer />
     </div>
   );
 }

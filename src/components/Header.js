@@ -5,7 +5,6 @@ import SearchBar from './SearchBar';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 
-
 export default function Header({ title, btnSearch }) {
   const [renderSearchBar, setRenderSearchBar] = useState(false);
   const history = useHistory();
@@ -41,13 +40,7 @@ export default function Header({ title, btnSearch }) {
       { !btnSearch ? (
         <button
           type="button"
-          onClick={ () => {
-            if (renderSearchBar === false) {
-              setRenderSearchBar(true);
-            } else {
-              setRenderSearchBar(false);
-            }
-          } }
+          onClick={ () => { setRenderSearchBar(!renderSearchBar); } }
         >
           <img
             src={ searchIcon }
