@@ -8,11 +8,12 @@ function CardList({ title }) {
     resultFood,
   } = useContext(RevenuesContext);
 
+  const NUMBER_TWELVE = 12;
   const { meals } = resultFood;
   const { drinks } = resultDrink;
 
   const foodRenderCard = () => (meals.length > 1
-    ? meals.map((recipe) => (
+    ? meals.slice(0, NUMBER_TWELVE).map((recipe) => (
       <div
         key={ recipe.idMeal }
         data-testid={ `${recipe.idMeal}-recipe-card` }
@@ -32,7 +33,7 @@ function CardList({ title }) {
     : null);
 
   const drinkRenderCard = () => (drinks.length > 1
-    ? drinks.map((recipe) => (
+    ? drinks.slice(0, NUMBER_TWELVE).map((recipe) => (
       <div
         key={ recipe.idDrink }
         data-testid={ `${recipe.idDrink}-recipe-card` }

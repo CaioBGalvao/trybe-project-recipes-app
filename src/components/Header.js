@@ -5,7 +5,7 @@ import SearchBar from './SearchBar';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 
-export default function Header({ title/* , btnSearch  */ }) {
+export default function Header({ title, btnSearch = false }) {
   const [renderSearchBar, setRenderSearchBar] = useState(false);
   const history = useHistory();
   const { location: { pathname } } = history;
@@ -20,35 +20,24 @@ export default function Header({ title/* , btnSearch  */ }) {
         {title}
       </h1>
 
-      <button
-        type="button"
-        datatest-id="search-top-btn"
-        onClick={ () => {
-          if (renderSearchBar === false) {
-            setRenderSearchBar(true);
-          } else {
-            setRenderSearchBar(false);
-          }
-        } }
-      >
-        <img
-          src={ searchIcon }
-          alt="Profile"
-        />
-      </button>
-      {/* Esperando a mentoria */}
-      {/* { !btnSearch ? (
+      {btnSearch && (
         <button
           type="button"
-          onClick={ () => { setRenderSearchBar(!renderSearchBar); } }
+          onClick={ () => {
+            if (renderSearchBar === false) {
+              setRenderSearchBar(true);
+            } else {
+              setRenderSearchBar(false);
+            }
+          } }
         >
           <img
+            data-testid="search-top-btn"
             src={ searchIcon }
             alt="Profile"
-            data-testid="search-top-btn"
           />
         </button>
-      ) : null} */}
+      )}
 
       {renderSearchBar === true
         && <SearchBar pathname={ pathname } />}
@@ -64,7 +53,7 @@ Header.propTypes = {
     }),
   }),
   title: PropTypes.string.isRequired,
-  // btnSearch: PropTypes.bool.isRequired,
+  btnSearch: PropTypes.bool.isRequired,
 };
 
 Header.defaultProps = {
