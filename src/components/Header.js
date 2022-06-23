@@ -22,6 +22,7 @@ export default function Header({ title }) {
 
       <button
         type="button"
+        datatest-id="search-top-btn"
         onClick={ () => {
           if (renderSearchBar === false) {
             setRenderSearchBar(true);
@@ -33,11 +34,10 @@ export default function Header({ title }) {
         <img
           src={ searchIcon }
           alt="Profile"
-          data-testid="search-top-btn"
         />
       </button>
       {renderSearchBar === true
-        && <SearchBar myRoute={ pathname } />}
+        && <SearchBar pathname={ pathname } />}
     </>
 
   );
