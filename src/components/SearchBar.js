@@ -71,7 +71,6 @@ function SearchBar({ pathname }) {
           type="search"
           id="revenues-search"
           name="revenuesSerch"
-          data-testid="search-input"
           value={ revenuesSerch }
           onChange={ handleChange }
         />
