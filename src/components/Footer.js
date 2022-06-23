@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
-import '../styles/Footer.css';
 import PropTypes from 'prop-types';
+import '../styles/Footer.css';
+import mealIcon from '../images/mealIcon.svg';
+import drinkIcon from '../images/drinkIcon.svg';
+import exploreIcon from '../images/exploreIcon.svg';
 
 export default function Footer() {
   const [redirectToDrinks, setRedirectToDrinks] = useState(false);
@@ -23,6 +26,7 @@ export default function Footer() {
       <section className="btn__row">
 
         <button
+          src={ drinkIcon }
           className=" btn__drinks"
           type="button"
           data-testid="drinks-bottom-btn"
@@ -30,7 +34,9 @@ export default function Footer() {
         >
           <span className="noShow">Drinks</span>
         </button>
+
         <button
+          src={ exploreIcon }
           className=" btn__explore"
           type="button"
           data-testid="explore-bottom-btn"
@@ -39,6 +45,7 @@ export default function Footer() {
           <span className="noShow">Explore</span>
         </button>
         <button
+          src={ mealIcon }
           className=" btn__foods"
           type="button"
           data-testid="food-bottom-btn"

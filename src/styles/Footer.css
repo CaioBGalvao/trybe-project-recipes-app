@@ -3,6 +3,7 @@
 }
 
 .footer__footer {
+  bottom: 0;
   position: fixed;
 }
 
@@ -10,8 +11,8 @@
   background-color: gainsboro;
   display: flex;
   height: 50px;
-  justify-content: space-evenly;
-  width: 300px;
+  justify-content: space-around;
+  width: 56.5vh;
 }
 
 .btn__drinks {

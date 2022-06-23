@@ -46,7 +46,7 @@ function App() {
           <Route exact path="/profile" component={ Profile } />
           <Route
             exact
-            path="/explore/foods/nacionalities"
+            path="/explore/foods/nationalities"
             component={ ExploreNacionalities }
           />
           <Route exact path="/favorites-recipes" component={ Favoritos } />
