@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import RevenuesContext from '../context/RevenuesContext';
 import fetchApiDrink from '../services/fetchApiDrinks';
 import Header from '../components/Header';
+import BtnFilter from '../components/BtnFilter';
 import CardList from '../components/CardList';
 import Footer from '../components/Footer';
 
@@ -19,6 +20,7 @@ function Drinks() {
   return (
     <div>
       <Header title="Drinks" btnSearch />
+      <BtnFilter title="Drinks" />
       <CardList title="Drinks" />
       <Footer />
     </div>

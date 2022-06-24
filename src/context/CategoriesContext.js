@@ -2,6 +2,6 @@ import { createContext } from 'react';
 
 const inicialState = {};
 
-const CategoryContext = createContext(inicialState);
+const CategoriesContext = createContext(inicialState);
 
-export default CategoryContext;
+export default CategoriesContext;

@@ -1,87 +1,56 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import CategoriesContext from '../context/CategoriesContext';
 
-function BtnFilter() {
-  // const {
-  //   // requestCategories,
-  //   // categoriesFoods,
-  // } = useContext(CategoriesContext);
+function BtnFilter({ title }) {
+  const {
+    categoriesFoods,
+    categoriesDrinks,
+  } = useContext(CategoriesContext);
 
   const NUMBER_FIVE = 5;
   const { meals } = categoriesFoods;
-
   const { drinks } = categoriesDrinks;
+  let category;
 
-  function handleClickFilterFood() {
-    meals.slice(0, NUMBER_FIVE).map((recipe) => (
-      <div
-        key={ recipe.idMeal }
-        data-testid={ `${recipe.idMeal}-recipe-card` }
-      >
-        <img
-          data-testid={ `${recipe.idMeal}-card-img` }
-          src={ recipe.strMealThumb }
-          alt={ recipe.strMeal }
-        />
-        <h2
-          data-testid={ `${recipe.idMeal}-card-name` }
-        >
-          {recipe.strMeal}
-
-        </h2>
-      </div>));
+  if (title === 'Foods') {
+    category = meals.slice(0, NUMBER_FIVE);
+  }
+  if (title === 'Drinks') {
+    category = drinks.slice(0, NUMBER_FIVE);
   }
 
+  const handleCategory = () => {
+    console.log('Categoria Clicada!');
+  };
+
+  console.log(category);
+
   return (
-    <div>
+    <>
       <button
         type="button"
-        // data-testid={ `${categoryName}-category-filter` }
-        onClick={ handleClickFilterFood }
+        onClick={ handleCategory }
+        data-testid="All-category-filter"
       >
         All
       </button>
-      <button
-        type="button"
-        // data-testid={ `${categoryName}-category-filter` }
-        onClick={ handleClickFilterFood }
-      >
-        Beef
-      </button>
-      <button
-        type="button"
-        // data-testid={ `${categoryName}-category-filter` }
-        onClick={ handleClickFilterFood }
-      >
-        Lamb
-
-      </button>
-      <button
-        type="button"
-        // data-testid={ `${categoryName}-category-filter` }
-        onClick={ handleClickFilterFood }
-      >
-        Chicken
-
-      </button>
-      <button
-        type="button"
-        // data-testid={ `${categoryName}-category-filter` }
-        onClick={ handleClickFilterFood }
-      >
-        Breakfast
-
-      </button>
-      <button
-        type="button"
-        // data-testid={ `${categoryName}-category-filter` }
-        onClick={ handleClickFilterFood }
-      >
-        Dessert
-
-      </button>
-    </div>
+      {category.map((categoryName, index) => (
+        <button
+          key={ index }
+          type="button"
+          onClick={ handleCategory }
+          data-testid={ `${categoryName.strCategory}-category-filter` }
+        >
+          {`${categoryName.strCategory}`}
+        </button>
+      ))}
+    </>
   );
 }
+
+BtnFilter.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 export default BtnFilter;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import CategoriesContext from './CategoriesContext';
 import fetchApiCategoriesDrinks from '../services/fetchApiCategoriesDrinks';
@@ -10,28 +10,18 @@ function CategoriesProvider({ children }) {
 
   const requestCategories = async (path) => {
     if (path === '/foods') {
-      const apiResultFood = await fetchApiCategoriesFoods();
-      setCategoriesFoods(apiResultFood);
+      const apiCategoryFood = await fetchApiCategoriesFoods();
+      setCategoriesFoods(apiCategoryFood);
     } else if (path === '/drinks') {
-      const apiResultDrink = await fetchApiCategoriesDrinks();
-      setCategoriesDrinks(apiResultDrink);
+      const apiCategoryDrink = await fetchApiCategoriesDrinks();
+      setCategoriesDrinks(apiCategoryDrink);
     }
   };
-
-  useEffect(() => {
-    requestCategories();
-  }, []);
-
-  useEffect(() => {
-    console.log(categoriesFoods);
-  }, [categoriesFoods]);
 
   const contextValue = {
     requestCategories,
     categoriesFoods,
-    setCategoriesFoods,
     categoriesDrinks,
-    setCategoriesDrinks,
   };
 
   return (

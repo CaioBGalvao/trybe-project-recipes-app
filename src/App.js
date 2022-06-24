@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router';
 import AppProvider from './context/LoginProvider';
 import RevenuesProvider from './context/RevenuesProvider';
+import CategoriesProvider from './context/CategoriesProvider';
 import Login from './pages/Login';
 import Foods from './pages/Foods';
 import Drinks from './pages/Drinks';
@@ -16,7 +17,6 @@ import Favoritos from './pages/Favoritos';
 import DoneRecipes from './pages/DoneRecipes';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import CategoriesProvider from './context/CategoriesProvider';
 
 function App() {
   return (
