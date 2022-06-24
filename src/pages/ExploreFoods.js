@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 function ExploreFoods() {
+  const [getSurpriseApi, setSurpriseApi] = useState([{ idMeal: '' }]);
+  useEffect(() => {
+    const surpriseApi = async () => {
+      const endPointSurprise = 'https://www.themealdb.com/api/json/v1/1/random.php';
+      const responseFetcher = await fetch(endPointSurprise);
+      const { meals } = await responseFetcher.json();
+      setSurpriseApi(meals);
+    };
+    surpriseApi();
+  }, []);
+
   return (
     <div>
       <Header title="Explore Foods" btnSearch />
-      <Link to="/explore/foods">
+      <Link to="/explore/foods/ingredients">
         <button type="button" data-testid="explore-by-ingredient">By Ingredient</button>
       </Link>
       <Link to="/explore/foods/nationalities">
@@ -18,12 +29,12 @@ function ExploreFoods() {
           By Nationality
         </button>
       </Link>
-      <Link to="/foods">
+      <Link to={ `/foods/${getSurpriseApi[0].idMeal}` }>
         <button
           type="button"
           data-testid="explore-surprise"
         >
-          Surprise Me!
+          Surprise me!
 
         </button>
       </Link>
