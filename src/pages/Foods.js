@@ -18,7 +18,7 @@ export default function Foods() {
 
   return (
     <div>
-      <Header title="Foods" />
+      <Header title="Foods" btnSearch />
       <CardList title="Foods" />
       <Footer />
     </div>
