@@ -56,7 +56,7 @@ function SearchBar({ pathname }) {
       return `search.php?s=${revenuesSerch}`;
     }
     if (firstLetter === true && revenuesSerch.length === 1) {
-      return `search.php?s=${revenuesSerch}`;
+      return `search.php?f=${revenuesSerch}`;
     }
     if (firstLetter === true && revenuesSerch.length !== 1) {
       global.alert('Your search must have only 1 (one) character');

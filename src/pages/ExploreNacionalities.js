@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 function ExploreNacionalities() {
   return (
     <div>
-      <Header title="Explore Nationalities" />
+      <Header title="Explore Nationalities" btnSearch />
       <Footer />
     </div>
   );

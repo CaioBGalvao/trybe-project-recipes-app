@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 function Explore() {
   return (
     <>
-      <Header title="Explore" btnSearch />
+      <Header title="Explore" />
       <Link to="/explore/foods">
         <button
           type="button"
