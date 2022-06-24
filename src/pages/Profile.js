@@ -1,13 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 function Profile() {
+  const history = useHistory();
+  const clearUser = () => {
+    window.localStorage.clear();
+    history.push('/');
+  };
+
+  const { email } = JSON.parse(window.localStorage.getItem('user'));
+
   return (
     <div>
       <Header title="Profile" btnSearch />
-      <h3 data-testid="profile-email">Email do Usuário</h3>
+      <h3 data-testid="profile-email">{ email }</h3>
       <Link to="/done-recipes">
         <button
           type="button"
@@ -17,7 +25,7 @@ function Profile() {
 
         </button>
       </Link>
-      <Link to="/favorites-recipes">
+      <Link to="/favorite-recipes">
         <button
           type="button"
           data-testid="profile-favorite-btn"
@@ -26,14 +34,13 @@ function Profile() {
 
         </button>
       </Link>
-      <Link to="/">
-        <button
-          type="button"
-          data-testid="profile-logout-btn"
-        >
-          Logout
-        </button>
-      </Link>
+      <button
+        type="button"
+        data-testid="profile-logout-btn"
+        onClick={ clearUser }
+      >
+        Logout
+      </button>
       <Footer />
     </div>
   );
