@@ -5,7 +5,7 @@ import SearchBar from './SearchBar';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 
-export default function Header({ title, btnSearch = false }) {
+export default function Header({ title, btnSearch }) {
   const [renderSearchBar, setRenderSearchBar] = useState(false);
   const history = useHistory();
   const { location: { pathname } } = history;
@@ -20,7 +20,7 @@ export default function Header({ title, btnSearch = false }) {
         {title}
       </h1>
 
-      {btnSearch && (
+      {!btnSearch ? (
         <button
           type="button"
           onClick={ () => {
@@ -37,7 +37,7 @@ export default function Header({ title, btnSearch = false }) {
             alt="Profile"
           />
         </button>
-      )}
+      ) : null}
 
       {renderSearchBar === true
         && <SearchBar pathname={ pathname } />}
