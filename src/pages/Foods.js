@@ -4,6 +4,7 @@ import fetchApiFood from '../services/fetchApiFood';
 import Header from '../components/Header';
 import CardList from '../components/CardList';
 import Footer from '../components/Footer';
+import BtnFilter from '../components/BtnFilter';
 
 export default function Foods() {
   const { setResultFood } = useContext(RevenuesContext);
@@ -19,6 +20,7 @@ export default function Foods() {
   return (
     <div>
       <Header title="Foods" />
+      <BtnFilter />
       <CardList title="Foods" />
       <Footer />
     </div>
