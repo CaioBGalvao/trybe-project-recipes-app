@@ -30,7 +30,7 @@ function BtnFilter({ pathname }) {
       <button
         type="button"
         onClick={ () => {
-          requestRevenues('filter.php?c=All', pathname);
+          requestRevenues('search.php?s=', pathname, false);
         } }
         data-testid="All-category-filter"
       >
@@ -41,7 +41,7 @@ function BtnFilter({ pathname }) {
           key={ index }
           type="button"
           onClick={ () => {
-            requestRevenues(`filter.php?c=${categoryName.strCategory}`, pathname);
+            requestRevenues(`filter.php?c=${categoryName.strCategory}`, pathname, false);
           } }
           data-testid={ `${categoryName.strCategory}-category-filter` }
         >

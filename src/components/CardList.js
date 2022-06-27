@@ -12,7 +12,7 @@ function CardList({ pathname }) {
   const { meals } = resultFood;
   const { drinks } = resultDrink;
 
-  const foodRenderCard = () => (meals.length > 1
+  const foodRenderCard = () => (meals.length > 0
     ? meals.slice(0, NUMBER_TWELVE).map((recipe, index) => (
       <div
         key={ recipe.idMeal }

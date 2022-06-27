@@ -10,7 +10,7 @@ function Provider({ children }) {
   const [resultDrink, setResultDrink] = useState({ drinks: [] });
   const history = useHistory();
 
-  const requestRevenues = async (argumento, path) => {
+  const requestRevenues = async (argumento, path, serchtype = true) => {
     if (path === '/foods') {
       const apiResultFood = await fetchApiFood(argumento);
       const { meals } = apiResultFood;
@@ -18,8 +18,8 @@ function Provider({ children }) {
         global.alert('Sorry, we haven\'t found any recipes for these filters.');
         return;
       }
-      if (meals.length === 1) {
-        history.push(`/foods/${meals[0].idMeal}`);
+      if (meals.length === 1 && serchtype) {
+        return history.push(`/foods/${meals[0].idMeal}`);
       }
       setResultFood(apiResultFood);
     } else if (path === '/drinks') {
@@ -29,8 +29,8 @@ function Provider({ children }) {
         global.alert('Sorry, we haven\'t found any recipes for these filters.');
         return;
       }
-      if (drinks.length === 1) {
-        history.push(`/drinks/${drinks[0].idDrink}`);
+      if (drinks.length === 1 && serchtype) {
+        return history.push(`/drinks/${drinks[0].idDrink}`);
       }
       setResultDrink(apiResultDrink);
     }
