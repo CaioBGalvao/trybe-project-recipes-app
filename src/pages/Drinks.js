@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import RevenuesContext from '../context/RevenuesContext';
 import CategoriesContext from '../context/CategoriesContext';
 import fetchApiDrink from '../services/fetchApiDrinks';
@@ -10,6 +11,9 @@ import Footer from '../components/Footer';
 function Drinks() {
   const { setResultDrink } = useContext(RevenuesContext);
   const { requestCategories } = useContext(CategoriesContext);
+
+  const history = useHistory();
+  const { location: { pathname } } = history;
 
   useEffect(() => {
     async function populateDrink() {
@@ -23,9 +27,9 @@ function Drinks() {
 
   return (
     <div>
-      <Header title="Drinks" btnSearch />
-      <BtnFilter title="Drinks" />
-      <CardList title="Drinks" />
+      <Header title="Drinks" pathname={ pathname } btnSearch />
+      <BtnFilter pathname={ pathname } />
+      <CardList pathname={ pathname } />
       <Footer />
     </div>
   );

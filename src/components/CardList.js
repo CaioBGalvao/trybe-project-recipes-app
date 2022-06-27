@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import RevenuesContext from '../context/RevenuesContext';
 
-function CardList({ title }) {
+function CardList({ pathname }) {
   const {
     resultDrink,
     resultFood,
@@ -52,16 +52,16 @@ function CardList({ title }) {
       </div>))
     : null);
 
-  if (title === 'Foods') {
+  if (pathname === '/foods') {
     return foodRenderCard();
   }
-  if (title === 'Drinks') {
+  if (pathname === '/drinks') {
     return drinkRenderCard();
   }
 }
 
 CardList.propTypes = {
-  title: PropTypes.string.isRequired,
+  pathname: PropTypes.string.isRequired,
 };
 
 export default CardList;

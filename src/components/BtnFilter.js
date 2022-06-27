@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import CategoriesContext from '../context/CategoriesContext';
 import RevenuesContext from '../context/RevenuesContext';
 
-function BtnFilter({ title }) {
+function BtnFilter({ pathname }) {
   const {
     categoriesFoods,
     categoriesDrinks,
@@ -18,10 +18,10 @@ function BtnFilter({ title }) {
   const { drinks } = categoriesDrinks;
   let category;
 
-  if (title === 'Foods') {
+  if (pathname === '/foods') {
     category = meals.slice(0, NUMBER_FIVE);
   }
-  if (title === 'Drinks') {
+  if (pathname === '/drinks') {
     category = drinks.slice(0, NUMBER_FIVE);
   }
 
@@ -29,7 +29,9 @@ function BtnFilter({ title }) {
     <>
       <button
         type="button"
-        onClick={ handleCategory }
+        onClick={ () => {
+          requestRevenues('filter.php?c=All', pathname);
+        } }
         data-testid="All-category-filter"
       >
         All
@@ -51,7 +53,7 @@ function BtnFilter({ title }) {
 }
 
 BtnFilter.propTypes = {
-  title: PropTypes.string.isRequired,
+  pathname: PropTypes.string.isRequired,
 };
 
 export default BtnFilter;
