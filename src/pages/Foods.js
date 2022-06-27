@@ -18,8 +18,7 @@ export default function Foods() {
       setResultFood(result);
     }
     populateMeal();
-    console.log('Estou sendo chamado?');
-    requestCategories('/foods'); // <<<<<<< ERRO
+    requestCategories('/foods');
   }, [requestCategories, setResultFood]);
 
   return (

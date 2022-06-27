@@ -1,12 +1,17 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import CategoriesContext from '../context/CategoriesContext';
+import RevenuesContext from '../context/RevenuesContext';
 
 function BtnFilter({ title }) {
   const {
     categoriesFoods,
     categoriesDrinks,
   } = useContext(CategoriesContext);
+
+  const {
+    requestRevenues,
+  } = useContext(RevenuesContext);
 
   const NUMBER_FIVE = 5;
   const { meals } = categoriesFoods;
@@ -19,12 +24,6 @@ function BtnFilter({ title }) {
   if (title === 'Drinks') {
     category = drinks.slice(0, NUMBER_FIVE);
   }
-
-  const handleCategory = () => {
-    console.log('Categoria Clicada!');
-  };
-
-  console.log(category);
 
   return (
     <>
@@ -39,7 +38,9 @@ function BtnFilter({ title }) {
         <button
           key={ index }
           type="button"
-          onClick={ handleCategory }
+          onClick={ () => {
+            requestRevenues(`filter.php?c=${categoryName.strCategory}`, pathname);
+          } }
           data-testid={ `${categoryName.strCategory}-category-filter` }
         >
           {`${categoryName.strCategory}`}

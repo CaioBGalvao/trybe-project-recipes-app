@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import CategoriesContext from './CategoriesContext';
 import fetchApiCategoriesDrinks from '../services/fetchApiCategoriesDrinks';
@@ -8,7 +8,7 @@ function CategoriesProvider({ children }) {
   const [categoriesFoods, setCategoriesFoods] = useState({ meals: [] });
   const [categoriesDrinks, setCategoriesDrinks] = useState({ drinks: [] });
 
-  const requestCategories = async (path) => {
+  const requestCategories = useCallback(async (path) => {
     if (path === '/foods') {
       const apiCategoryFood = await fetchApiCategoriesFoods();
       setCategoriesFoods(apiCategoryFood);
@@ -16,7 +16,7 @@ function CategoriesProvider({ children }) {
       const apiCategoryDrink = await fetchApiCategoriesDrinks();
       setCategoriesDrinks(apiCategoryDrink);
     }
-  };
+  }, []);
 
   const contextValue = {
     requestCategories,
