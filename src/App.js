@@ -50,7 +50,7 @@ function App() {
             path="/explore/foods/nationalities"
             component={ ExploreNacionalities }
           />
-          <Route exact path="/favorites-recipes" component={ Favoritos } />
+          <Route exact path="/favorite-recipes" component={ Favoritos } />
           <Route exact path="/done-recipes" component={ DoneRecipes } />
         </Switch>
       </RevenuesProvider>

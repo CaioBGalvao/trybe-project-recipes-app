@@ -20,7 +20,7 @@ export default function Header({ title, btnSearch = false }) {
         {title}
       </h1>
 
-      {btnSearch && (
+      {btnSearch ? (
         <button
           type="button"
           onClick={ () => {
@@ -37,7 +37,7 @@ export default function Header({ title, btnSearch = false }) {
             alt="Profile"
           />
         </button>
-      )}
+      ) : null}
 
       {renderSearchBar === true
         && <SearchBar pathname={ pathname } />}

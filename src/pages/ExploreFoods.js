@@ -38,6 +38,7 @@ function ExploreFoods() {
 
         </button>
       </Link>
+
       <Footer />
     </div>
   );
