@@ -47,7 +47,3 @@ function Profile() {
 }
 
 export default Profile;
-
-// Falta
-// - Limpa todas as chaves da localStorage;
-// - O e-mail armazenado em localStorage está visível.
