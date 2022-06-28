@@ -24,6 +24,7 @@ function CardList({ pathname }) {
           data-testid={ `${index}-card-img` }
           src={ recipe.strMealThumb }
           alt={ recipe.strMeal }
+          width="300" // Propriedade para passar no Cypress (ALTERAR POR UMA CSS)
         />
         <h2
           data-testid={ `${index}-card-name` }
@@ -45,6 +46,7 @@ function CardList({ pathname }) {
           data-testid={ `${index}-card-img` }
           src={ recipe.strDrinkThumb }
           alt={ recipe.strDrink }
+          width="300" // Propriedade para passar no Cypress (ALTERAR POR UMA CSS)
         />
         <h2
           data-testid={ `${index}-card-name` }
