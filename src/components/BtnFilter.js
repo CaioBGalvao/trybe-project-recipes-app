@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import CategoriesContext from '../context/CategoriesContext';
 import RevenuesContext from '../context/RevenuesContext';
@@ -13,6 +13,8 @@ function BtnFilter({ pathname }) {
     requestRevenues,
   } = useContext(RevenuesContext);
 
+  const [toggleFilter, setToggleFilter] = useState('');
+
   const NUMBER_FIVE = 5;
   const { meals } = categoriesFoods;
   const { drinks } = categoriesDrinks;
@@ -24,6 +26,18 @@ function BtnFilter({ pathname }) {
   if (pathname === '/drinks') {
     category = drinks.slice(0, NUMBER_FIVE);
   }
+
+  const handleFilterButton = (target, categoryName) => {
+    if (toggleFilter !== target.value) {
+      requestRevenues(`filter.php?c=${categoryName}`, pathname, false);
+      setToggleFilter(target.value);
+    }
+    if (toggleFilter === target.value) {
+      requestRevenues('search.php?s=', pathname, false);
+      setToggleFilter('');
+    }
+    // requestRevenues(`filter.php?c=${categoryName.strCategory}`, pathname, false);
+  };
 
   return (
     <>
@@ -40,9 +54,8 @@ function BtnFilter({ pathname }) {
         <button
           key={ index }
           type="button"
-          onClick={ () => {
-            requestRevenues(`filter.php?c=${categoryName.strCategory}`, pathname, false);
-          } }
+          value={ categoryName.strCategory }
+          onClick={ ({ target }) => handleFilterButton(target, categoryName.strCategory) }
           data-testid={ `${categoryName.strCategory}-category-filter` }
         >
           {`${categoryName.strCategory}`}

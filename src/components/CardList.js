@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import RevenuesContext from '../context/RevenuesContext';
 
@@ -14,8 +15,9 @@ function CardList({ pathname }) {
 
   const foodRenderCard = () => (meals.length > 0
     ? meals.slice(0, NUMBER_TWELVE).map((recipe, index) => (
-      <div
+      <Link
         key={ recipe.idMeal }
+        to={ `${pathname}/${recipe.idMeal}` }
         data-testid={ `${index}-recipe-card` }
       >
         <img
@@ -29,13 +31,14 @@ function CardList({ pathname }) {
           {recipe.strMeal}
 
         </h2>
-      </div>))
+      </Link>))
     : null);
 
   const drinkRenderCard = () => (drinks.length > 1
     ? drinks.slice(0, NUMBER_TWELVE).map((recipe, index) => (
-      <div
+      <Link
         key={ recipe.idDrink }
+        to={ `${pathname}/${recipe.idDrink}` }
         data-testid={ `${index}-recipe-card` }
       >
         <img
@@ -49,7 +52,7 @@ function CardList({ pathname }) {
           {recipe.strDrink}
 
         </h2>
-      </div>))
+      </Link>))
     : null);
 
   if (pathname === '/foods') {
