@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { /* useHistory, */Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Card, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,7 +11,7 @@ function CardList({ pathname }) {
     resultFood,
   } = useContext(RevenuesContext);
 
-  // const history = useHistory();
+  const history = useHistory();
 
   const NUMBER_TWELVE = 12;
   const { meals } = resultFood;
@@ -19,36 +19,32 @@ function CardList({ pathname }) {
 
   const foodRenderCard = () => (meals.length > 0
     ? meals.slice(0, NUMBER_TWELVE).map((recipe, index) => (
-      <Link
-        key={ recipe.idMeal }
-        to={ `${pathname}/${recipe.idMeal}` }
-      >
-        <Col>
-          <Card
-          // onClick={ history.push(`${pathname}/${recipe.idMeal}`) }
-            data-testid={ `${index}-recipe-card` }
-            className=" m-1 bg-light rounded"
-          >
+      <Col key={ recipe.idMeal }>
+        <Card
+          onClick={ () => { history.push(`${pathname}/${recipe.idMeal}`); } }
+          data-testid={ `${index}-recipe-card` }
+          className=" m-2 bg-light rounded"
+        >
 
-            <Card.Img
-              variant="top"
-              className="img-thumbnail"
-              data-testid={ `${index}-card-img` }
-              src={ recipe.strMealThumb }
-              alt={ recipe.strMeal }
-            />
-            <Card.Body>
-              <Card.Title
-                data-testid={ `${index}-card-name` }
-                className="text-center text-decoration-none"
-              >
-                {recipe.strMeal}
+          <Card.Img
+            variant="top"
+            className="img-thumbnail"
+            data-testid={ `${index}-card-img` }
+            src={ recipe.strMealThumb }
+            alt={ recipe.strMeal }
+          />
+          <Card.Body>
+            <Card.Title
+              data-testid={ `${index}-card-name` }
+              className="text-center text-decoration-none"
+            >
+              {recipe.strMeal}
 
-              </Card.Title>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Link>))
+            </Card.Title>
+          </Card.Body>
+        </Card>
+      </Col>
+    ))
     : null);
 
   const drinkRenderCard = () => (drinks.length > 1
@@ -56,9 +52,8 @@ function CardList({ pathname }) {
       <Col
         key={ recipe.idDrink }
       >
-        {/* <Link href={ `${pathname}/${recipe.idDrink}` }> */}
         <Card
-          // onClick={ history.push(`${pathname}/${recipe.idDrink}`) }
+          onClick={ () => { history.push(`${pathname}/${recipe.idMeal}`); } }
           data-testid={ `${index}-recipe-card` }
         >
           <Card.Img
@@ -76,7 +71,6 @@ function CardList({ pathname }) {
             </Card.Title>
           </Card.Body>
         </Card>
-        {/* </Link> */}
       </Col>
     ))
     : null);

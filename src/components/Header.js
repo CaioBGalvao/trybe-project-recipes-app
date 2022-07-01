@@ -24,7 +24,7 @@ export default function Header({ title, pathname, btnSearch = false }) {
 
         >
           <h1
-            className="fw-bold"
+            className="fw-bold text-body"
             data-testid="page-title"
           >
             {title}
@@ -50,7 +50,6 @@ export default function Header({ title, pathname, btnSearch = false }) {
             />
           </Button>
         ) : null}
-        
         {renderSearchBar === true
         && <SearchBar pathname={ pathname } />}
       </Container>
@@ -64,9 +63,3 @@ Header.propTypes = {
   title: PropTypes.string.isRequired,
   btnSearch: PropTypes.bool.isRequired,
 };
-
-<Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-          </Nav>
-        </Navbar.Collapse>
