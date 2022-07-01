@@ -1,4 +1,6 @@
 import React, { useState, useContext } from 'react';
+import { Form, Button, ButtonGroup, ToggleButton } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import PropTypes from 'prop-types';
 import RevenuesContext from '../context/RevenuesContext';
 
@@ -64,9 +66,9 @@ function SearchBar({ pathname }) {
   };
 
   return (
-    <form>
-      <label htmlFor="revenues-search">
-        <input
+    <Form>
+      <Form.Group className="mb-3">
+        <Form.Control
           data-testid="search-input"
           type="search"
           id="revenues-search"
@@ -74,42 +76,49 @@ function SearchBar({ pathname }) {
           value={ revenuesSerch }
           onChange={ handleChange }
         />
-      </label>
-      <label htmlFor="ingredient-radio">
-        Ingredient
-        <input
+      </Form.Group>
+      <ButtonGroup className="mb-2">
+        <ToggleButton
           type="radio"
+          variant="warning"
           id="ingredient-radio"
           name="ingredient"
           checked={ ingredient }
           onChange={ handleChange }
           data-testid="ingredient-search-radio"
-        />
-      </label>
-      <label htmlFor="name-radio">
-        Name
-        <input
+        >
+          Ingredient
+
+        </ToggleButton>
+        <ToggleButton
           type="radio"
+          variant="warning"
           id="name-radio"
           name="name"
           checked={ name }
           onChange={ handleChange }
           data-testid="name-search-radio"
-        />
-      </label>
-      <label htmlFor="first-letter-radio">
-        First Letter
-        <input
+        >
+          Name
+
+        </ToggleButton>
+        <ToggleButton
           type="radio"
+          variant="warning"
           id="first-letter-radio"
           name="firstLetter"
           checked={ firstLetter }
           onChange={ handleChange }
           data-testid="first-letter-search-radio"
-        />
-      </label>
-      <button
+        >
+          First Letter
+
+        </ToggleButton>
+      </ButtonGroup>
+      <br />
+      <Button
         type="button"
+        variant="success"
         data-testid="exec-search-btn"
         onClick={ () => {
           requestRevenues(endPointSelector(), pathname);
@@ -117,8 +126,8 @@ function SearchBar({ pathname }) {
       >
         Search
 
-      </button>
-    </form>
+      </Button>
+    </Form>
   );
 }
 

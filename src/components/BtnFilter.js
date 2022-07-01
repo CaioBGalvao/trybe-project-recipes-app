@@ -1,5 +1,8 @@
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/FilterButtons.css';
 import CategoriesContext from '../context/CategoriesContext';
 import RevenuesContext from '../context/RevenuesContext';
 
@@ -36,12 +39,13 @@ function BtnFilter({ pathname }) {
       requestRevenues('search.php?s=', pathname, false);
       setToggleFilter('');
     }
-    // requestRevenues(`filter.php?c=${categoryName.strCategory}`, pathname, false);
   };
 
   return (
-    <>
-      <button
+    <div className="buttonsContainer">
+      <Button
+        variant="warning"
+        className="button"
         type="button"
         onClick={ () => {
           requestRevenues('search.php?s=', pathname, false);
@@ -49,9 +53,11 @@ function BtnFilter({ pathname }) {
         data-testid="All-category-filter"
       >
         All
-      </button>
+      </Button>
       {category.map((categoryName, index) => (
-        <button
+        <Button
+          variant="warning"
+          className="button"
           key={ index }
           type="button"
           value={ categoryName.strCategory }
@@ -59,9 +65,9 @@ function BtnFilter({ pathname }) {
           data-testid={ `${categoryName.strCategory}-category-filter` }
         >
           {`${categoryName.strCategory}`}
-        </button>
+        </Button>
       ))}
-    </>
+    </div>
   );
 }
 
