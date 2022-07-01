@@ -1,84 +1,77 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import LoginContext from '../context/LoginContext';
-
-// a
+import '../styles/Login.css';
 
 export default function Login({ history }) {
-  const {
-    setInputEmail,
-    setInputPassword,
-    inputEmail,
-    inputPassword,
-  } = useContext(LoginContext);
-
-  const [isValid, setValidation] = useState(true);
+  const [emailInput, setEmailInput] = useState('');
+  const [passwordInput, setPasswordInput] = useState('');
+  const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
-    const NUMBER_SIX = 6;
-
+    const MIN_PASSWORD_LENGTH = 6;
     if (
-      inputEmail.includes('@')
-      && inputEmail.includes('.com')
-      && inputPassword.length > NUMBER_SIX) {
-      setValidation(false);
+      emailInput.includes('@')
+      && emailInput.includes('.com')
+      && passwordInput.length > MIN_PASSWORD_LENGTH
+    ) {
+      setDisabled(false);
     } else {
-      setValidation(true);
+      setDisabled(true);
     }
-  }, [inputEmail, inputPassword]);
+  }, [emailInput, passwordInput]);
 
   const handleButtonClick = () => {
-    const personObject = {
-      email: inputEmail,
-    };
+    const FIXED_TOKEN = '1';
+    const userObject = { email: emailInput };
 
-    localStorage.setItem('mealsToken', JSON.stringify(1));
-    localStorage.setItem('user', JSON.stringify(personObject));
-    localStorage.setItem('cocktailsToken', JSON.stringify(1));
+    localStorage.setItem('mealsToken', FIXED_TOKEN);
+    localStorage.setItem('cocktailsToken', FIXED_TOKEN);
+    localStorage.setItem('user', JSON.stringify(userObject));
 
     history.push('/foods');
   };
 
   return (
-    <>
-      <h1>Login</h1>
-      <label htmlFor="inputEmail">
-        <input
-          name="inputEmail"
-          type="email"
-          data-testid="email-input"
-          placeholder="Ex.: ada.lovelace@betrybe.com"
-          onChange={ ({ target: { value } }) => setInputEmail(value) }
-        />
-      </label>
-      <label htmlFor="inputPassword">
-        <input
-          name="inputPassword"
-          type="password"
-          data-testid="password-input"
-          placeholder="**********"
-          onChange={ ({ target: { value } }) => setInputPassword(value) }
-        />
-      </label>
-      <button
-        type="button"
-        data-testid="login-submit-btn"
-        disabled={ isValid }
-        onClick={ handleButtonClick }
-      >
-        Enter
-      </button>
-    </>
+    <main className="login__main">
+      <div className="login__form">
+        <div className="login__logo__container">
+          <h1 className="login__logo">Recipe App</h1>
+        </div>
 
+        <form className="login__forms">
+          <div className="login__div">
+            <h2 className="login__h2">Login</h2>
+            <p className="login__p">your next meal, one click away!</p>
+          </div>
+
+          <input
+            className="login__input"
+            data-testid="email-input"
+            placeholder="name@email.com"
+            onChange={ ({ target: { value } }) => setEmailInput(value) }
+          />
+          <input
+            className="login__input"
+            type="password"
+            data-testid="password-input"
+            placeholder="password"
+            onChange={ ({ target: { value } }) => setPasswordInput(value) }
+          />
+          <button
+            className="login__button"
+            type="button"
+            onClick={ handleButtonClick }
+            data-testid="login-submit-btn"
+            disabled={ disabled }
+          >
+            Enter
+          </button>
+        </form>
+      </div>
+    </main>
   );
 }
 
 Login.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }),
-};
-
-Login.defaultProps = {
-  history: null,
-};
+  history: PropTypes.object,
+}.isRequired;

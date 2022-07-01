@@ -7,23 +7,12 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  left: 35%;
   position: fixed;
   width: 100%;
-}
-
-.login__driver__image {
-  height: 100%;
-  left: 0;
-  position: fixed;
-  width: 70%;
-  z-index: 1;
 }
 
 .login__main {
   display: flex;
-  height: 100vh;
-  width: 100%;
 }
 
 .login__forms {
@@ -44,7 +33,7 @@
   background-color: rgb(233, 47, 47);
   display: flex;
   justify-content: center;
-  width: 80vh;
+  width: 100vh;
 }
 
 .login__input {
@@ -79,7 +68,7 @@
 .login__h2 {
   margin-bottom: 10px;
   text-align: start;
-} /*# sourceMappingURL=Login.css.map */
+}
 
 .login__p {
   color: #999;
