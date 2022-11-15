@@ -1,13 +1,5 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+# Projeto App de Receitas
+## Último projeto de Front-End
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
-
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+Nesse projeto deveriamos fazer um app que captura informações de Duas API diferentes [The Meal DataBase](https://www.themealdb.com/) e [The Cocktail Database](https://www.thecocktaildb.com/).
+Deveriamos ter um login e uma área de busca de comidas e bebidas. Ao selecionar a receita que você quer o site permitirá você controlar a lista de compra de ingredientes e um video do youtube de como fazer a receita.
